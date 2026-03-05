@@ -1,0 +1,26 @@
+title: Suspicious PowerShell Execution
+id: CAR-2026-0001
+platforms:
+  - Windows
+submission_date: 2026-03-05
+information_domain:
+  - host
+subtypes:
+  - Process Monitoring
+contributors:
+  - Your Name
+
+description: |
+  Detects suspicious PowerShell commands that may indicate
+  malicious execution or attacker activity.
+
+coverage:
+  - technique: T1059.001
+    tactic: Execution
+    description: PowerShell execution
+
+implementation:
+  - type: Sysmon
+    pseudocode: |
+      process_name == "powershell.exe"
+      AND command_line CONTAINS "-enc"
